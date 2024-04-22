@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm bg-info navbar-info">
+        <div class="container-fluid justify-content-center">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Listado</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/registro">Registro</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <h1 class="text-center mb-5">REGISTRO DE PRODUCTOS</h1>
+
+        <div style="margin: 0 300px">
+            <form th:object="${producto}" th:action="@{/registro}" method="post">
+                <input type="hidden" th:field="*{id}">
+
+                <div class="mb-3 mt-3">
+                    <label for="name" class="form-label">Nombre:</label>
+                    <input type="text" class="form-control" id="name" placeholder="Nombre del producto" th:field="*{name}">
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="price" class="form-label">Precio:</label>
+                    <input class="form-control" id="price" placeholder="Precio del producto" th:field="*{price}">
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="image" class="form-label">Imagen:</label>
+                    <input type="url" class="form-control" id="image" placeholder="URL de la imagen del producto" th:field="*{image}">
+                </div>
+
+                <div style="display: flex; justify-content: center">
+                    <button type="submit" class="btn btn-primary px-5 py-2">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
